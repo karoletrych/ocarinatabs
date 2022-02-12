@@ -20,8 +20,7 @@ namespace IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // uncomment, if you want to add an MVC-based UI
-            //services.AddControllersWithViews();
+            services.AddControllersWithViews();
 
             var builder = services.AddIdentityServer(options =>
             {
@@ -34,6 +33,7 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+            
         }
 
         public void Configure(IApplicationBuilder app)
@@ -43,18 +43,16 @@ namespace IdentityServer
                 app.UseDeveloperExceptionPage();
             }
 
-            // uncomment if you want to add MVC
-            //app.UseStaticFiles();
-            //app.UseRouting();
-            
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthorization();
+
             app.UseIdentityServer();
 
-            // uncomment, if you want to add MVC
-            //app.UseAuthorization();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapDefaultControllerRoute();
-            //});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+            });
         }
     }
 }
