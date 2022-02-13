@@ -38,7 +38,7 @@
           <list>
             <DockerVolumeBindingImpl>
               <option name="containerPath" value="/https" />
-              <option name="hostPath" value="C:\Users\Domek\.aspnet\https\" />
+              <option name="hostPath" value="C:\Users\karol\.aspnet\https" />
             </DockerVolumeBindingImpl>
           </list>
         </option>
